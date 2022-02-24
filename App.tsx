@@ -1,16 +1,22 @@
 import React from 'react';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import { NativeBaseProvider, Text, Box } from 'native-base';
+import { NativeBaseProvider, INativebaseConfig } from 'native-base';
+import { RecipesScreen } from './src/screens/recipes';
 
 export default function App() {
   return (
     <>
-      <NativeBaseProvider>
-        <Box flex={1} bg="#000000" alignItems="center" justifyContent="center">
-          <Text>Open up App.js to start working on your app!</Text>
-        </Box>
+      <NativeBaseProvider config={config}>
+        <RecipesScreen />
       </NativeBaseProvider>
-      <ExpoStatusBar />
+      <ExpoStatusBar style="auto" />
     </>
   );
 }
+
+// ignore the INativebaseConfig if you are not using typescript
+
+const config: INativebaseConfig = {
+  // rest of the config keys like dependencies can go here
+  strictMode: 'warn',
+};
