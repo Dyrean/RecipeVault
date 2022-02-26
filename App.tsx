@@ -2,12 +2,15 @@ import React from 'react';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { NativeBaseProvider, INativebaseConfig } from 'native-base';
 import { RecipesScreen } from './src/screens/recipes';
+import { SafeArea } from './src/components/SafeArea/safe-area.component';
 
 export default function App() {
   return (
     <>
       <NativeBaseProvider config={config}>
-        <RecipesScreen />
+        <SafeArea>
+          <RecipesScreen />
+        </SafeArea>
       </NativeBaseProvider>
       <ExpoStatusBar style="auto" />
     </>

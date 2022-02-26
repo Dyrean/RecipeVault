@@ -1,23 +1,19 @@
-import React from 'react';
-import { Center } from 'native-base';
+import { mocks } from '../../mock/recipes.mock';
+import { Recipe } from '../../types/recipe';
+import React, { useState } from 'react';
+import { FlatList } from 'react-native';
+import { RecipeCard } from '../../components/RecipeCard/recipe-card.component';
 
 export const RecipesScreen = () => {
+  const [recipes] = useState<Recipe[]>(mocks.data);
+
   return (
-    <Center>
-      <Center
-        bg="primary.400"
-        _text={{
-          color: 'white',
-          fontWeight: 'bold',
-        }}
-        height={200}
-        width={{
-          base: 200,
-          lg: 250,
-        }}
-      >
-        This is the Center
-      </Center>
-    </Center>
+    <FlatList
+      data={recipes}
+      renderItem={({ item }) => {
+        return <RecipeCard recipe={item} />;
+      }}
+      keyExtractor={(item) => item.id}
+    />
   );
 };
