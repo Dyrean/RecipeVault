@@ -1,11 +1,10 @@
 import { mocks } from '../../mock/recipes.mock';
-import { Recipe } from '../../types/recipe';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 import { RecipeCard } from '../../components/RecipeCard/recipe-card.component';
 
 export const RecipesScreen = () => {
-  const [recipes] = useState<Recipe[]>(mocks.data);
+  const [recipes] = useState<any[]>(mocks.data);
 
   return (
     <FlatList

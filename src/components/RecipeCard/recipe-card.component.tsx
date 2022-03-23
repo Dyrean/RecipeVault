@@ -1,11 +1,9 @@
 import React from 'react';
-import { Steps } from '../../types/steps';
-import { Recipe } from '../../types/recipe';
-import { Dimensions } from 'react-native';
-import { Box, HStack, Text, VStack, Image } from 'native-base';
+import { Image } from 'react-native';
+import { MotiView, MotiText } from 'moti';
 
 type Props = {
-  recipe: Recipe;
+  recipe: any;
 };
 
 export const RecipeCard = ({ recipe }: Props) => {
@@ -15,33 +13,22 @@ export const RecipeCard = ({ recipe }: Props) => {
     instructions: { steps },
   } = recipe;
   return (
-    <Box
-      rounded="md"
-      width="90%"
-      maxWidth="95%"
-      height={Dimensions.get('screen').width / 2}
-      alignSelf="center"
-      backgroundColor="amber.100"
-    >
-      <HStack justifyContent="space-between" space="2">
+    <MotiView>
+      <MotiView>
         <Image
           source={{
-            uri: image,
+            uri: `${image}`,
           }}
-          alt={title}
-          height={Dimensions.get('screen').width / 2}
-          rounded="lg"
-          width={Dimensions.get('screen').width / 2}
         />
-        <VStack space="2" width={Dimensions.get('screen').width / 2} alignContent="center">
-          <Text fontSize="md">{title}</Text>
-          {steps.map((step: Steps) => {
-            step.ingredients.map((ingredient) => {
+        <MotiView>
+          <MotiText>{title}</MotiText>
+          {steps.map((step: any) => {
+            step.ingredients.map((ingredient: any) => {
               console.log(ingredient.ingredient.name);
             });
           })}
-        </VStack>
-      </HStack>
-    </Box>
+        </MotiView>
+      </MotiView>
+    </MotiView>
   );
 };
