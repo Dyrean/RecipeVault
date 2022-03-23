@@ -10,7 +10,15 @@
     "eject": "expo eject",
     "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx ./",
     "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\"",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "automock": false
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -34,8 +42,12 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@testing-library/react-native": "^9.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/mocha": "^9.1.0",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -43,6 +55,9 @@
     "eslint": "^8.9.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "jest-expo": "^44.0.1",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^12.3.4",
     "postcss": "^8.4.12",
     "prettier": "^2.5.1",

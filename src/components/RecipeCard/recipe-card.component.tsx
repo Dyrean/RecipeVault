@@ -1,33 +1,21 @@
 import React from 'react';
-import { Image } from 'react-native';
-import { MotiView, MotiText } from 'moti';
+import { MotiView, MotiText, MotiImage } from 'moti';
 
 type Props = {
   recipe: any;
 };
 
 export const RecipeCard = ({ recipe }: Props) => {
-  const {
-    image = '',
-    title = '',
-    instructions: { steps },
-  } = recipe;
+  const { image = '', title = '' } = recipe;
   return (
     <MotiView>
+      <MotiImage
+        source={{
+          uri: `${image}`,
+        }}
+      />
       <MotiView>
-        <Image
-          source={{
-            uri: `${image}`,
-          }}
-        />
-        <MotiView>
-          <MotiText>{title}</MotiText>
-          {steps.map((step: any) => {
-            step.ingredients.map((ingredient: any) => {
-              console.log(ingredient.ingredient.name);
-            });
-          })}
-        </MotiView>
+        <MotiText>{title}</MotiText>
       </MotiView>
     </MotiView>
   );
